@@ -6,7 +6,10 @@ from streamlit_folium import st_folium
 
 st.set_page_config(page_title="PFAS Dashboard Zeeland", layout="wide")
 
-DATA_PATH = "Data/ultieme_master_coords_slim_genormaliseerd.csv"
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+DATA_PATH = BASE_DIR / "Data" / "ultieme_master_coords_slim_genormaliseerd.csv"
 
 
 # =========================
@@ -14,7 +17,7 @@ DATA_PATH = "Data/ultieme_master_coords_slim_genormaliseerd.csv"
 # =========================
 @st.cache_data(show_spinner=False)
 def load_data(path: str) -> pd.DataFrame:
-    df = pd.read_csv(path)
+    df = pd.read_csv(str(path))
 
     # Numeriek maken
     for col in ["Latitude", "Longitude"]:
@@ -261,6 +264,13 @@ def make_map(map_df: pd.DataFrame, kaarttype: str) -> folium.Map:
 # App
 # =========================
 st.title("🌍 PFAS Dashboard — Zeeland")
+if not DATA_PATH.exists():
+    st.error("Datafile niet gevonden op Streamlit Cloud.")
+    st.code(f"Zoekpad: {DATA_PATH}")
+    st.code(f"Bestanden in repo-root: {list(BASE_DIR.iterdir())}")
+    data_dir = BASE_DIR / "Data"
+    st.code(f"Bestanden in Data/: {list(data_dir.iterdir()) if data_dir.exists() else 'Data-map bestaat niet'}")
+    st.stop()
 df = load_data(DATA_PATH)
 
 # -------------------------
@@ -576,3 +586,4 @@ De precieze biologische mechanismen worden nog onderzocht (Corsini et al., 2024)
 - Wageningen Marine Research (2022). *PFAS in Zeeland.*
 - European Food Safety Authority (EFSA) (2020/2024). *Risk to human health related to PFAS in food.*
 """)
+
