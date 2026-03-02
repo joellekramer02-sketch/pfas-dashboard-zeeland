@@ -9,7 +9,7 @@ st.set_page_config(page_title="PFAS Dashboard Zeeland", layout="wide")
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
-DATA_PATH = BASE_DIR / "Data" / "ultieme_master_coords_slim_genormaliseerd.csv"
+DATA_PATH = BASE_DIR / "ultieme_master_coords_slim_genormaliseerd.csv"
 
 
 # =========================
@@ -586,4 +586,5 @@ De precieze biologische mechanismen worden nog onderzocht (Corsini et al., 2024)
 - Wageningen Marine Research (2022). *PFAS in Zeeland.*
 - European Food Safety Authority (EFSA) (2020/2024). *Risk to human health related to PFAS in food.*
 """)
+
 
