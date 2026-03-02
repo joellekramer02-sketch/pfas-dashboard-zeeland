@@ -500,21 +500,79 @@ with tab_staaf:
 
 with tab_info:
     st.subheader("ℹ️ Over PFAS")
-    st.markdown("""
-**PFAS** staat voor *Per- en PolyFluorAlkylStoffen*: een grote groep door mensen gemaakte chemische stoffen.
-Ze worden al decennia gebruikt omdat ze water-, vet- en vuilafstotend zijn.
+st.markdown("""
+### Wat zijn PFAS?
 
-### Waarom zijn PFAS een aandachtspunt?
-- PFAS kunnen **lang in het milieu** aanwezig blijven (sommige breken nauwelijks af).
-- Sommige PFAS kunnen zich **ophopen** in organismen.
-- Er is aandacht voor mogelijke effecten op **mens en ecosysteem**.
+PFAS (poly- en perfluoralkylstoffen) zijn door de mens gemaakte chemische stoffen.  
+Ze worden gebruikt omdat ze water-, vet- en vuilafstotend zijn. Deze eigenschappen maken ze nuttig in onder andere textiel, voedselverpakkingen en industriële processen.
 
-### Wat laat dit dashboard zien?
-Dit dashboard toont metingen van PFAS in Zeeland uit verschillende bronnen (o.a. RWS/WUR/RWZI/VWS).
-Je kunt filteren op PFAS, bron, medium en locatie.
+Wat PFAS bijzonder maakt, is de extreem sterke binding tussen koolstof en fluor.  
+Hierdoor breken ze nauwelijks af in het milieu. Ze zijn bestand tegen hitte, chemische afbraak en biologische processen (Jonker, 2024). Daarom worden ze ook wel *“forever chemicals”* genoemd.
 
-### Let op bij interpretatie
-- **Eenheden kunnen verschillen** (bijv. ng/L of µg/L). Vergelijk alleen waarden die inhoudelijk vergelijkbaar zijn.
-- **<LOQ**: sommige waarden zijn onder de rapportage-/detectiegrens. In de tabel kun je dit herkennen via `LOQ_flag`.
-- Meetmethodes en monsters kunnen verschillen per bron en jaar.
+---
+
+### PFAS in Zeeland
+
+In Zeeland worden PFAS aangetroffen in verschillende onderdelen van het milieu:
+
+- Voedselproducten zoals vis, garnalen, schelpdieren en zeekraal bevatten meetbare concentraties PFAS (Wageningen Marine Research, 2022).
+- Oppervlaktewater en sediment bevatten PFAS, waarbij concentraties in de Westerschelde een gradiënt van west naar oost laten zien (Wageningen Marine Research, 2022).
+- PFAS met meer dan vijf koolstofatomen zijn vaak extra persistent en mobiel in bodem en water (van Leeuwen et al., 2022).
+
+---
+
+### Hoe komen PFAS in het milieu terecht?
+
+PFAS verspreiden zich via meerdere routes:
+
+- Lozingen van productiebedrijven (bijvoorbeeld 3M in Antwerpen, Chemours in Dordrecht).
+- Afvalverwerkers en rioolwaterzuiveringsinstallaties.
+- Consumentenproducten zoals textiel en cosmetica die via afvalwater in oppervlaktewater terechtkomen.
+- Transport via lucht en zee-spray, waardoor PFAS wereldwijd circuleren (Ford & Ginley, 2024; Pradeep Dewapriya et al., 2023; Deelen, 2024).
+
+In Nederland zijn PFAS inmiddels aangetoond in vrijwel alle grote watersystemen (Jonker, 2024).
+
+---
+
+### Blootstelling van mens en milieu
+
+PFAS lossen goed op in water en kunnen zich daardoor gemakkelijk verspreiden in rivieren en zeeën.  
+Via water en voedsel komen ze in de voedselketen terecht.
+
+Volgens Wageningen Marine Research (2022) kan consumptie van lokale zeeproducten bijdragen aan verhoogde blootstelling. Onderzoek van het RIVM laat zien dat vrijwel alle Nederlanders meerdere PFAS in hun bloed hebben. PFOS wordt het meest aangetroffen, gevolgd door PFOA (Bil et al., 2025).
+
+---
+
+### Gezondheidsrisico’s
+
+De Europese Autoriteit voor Voedselveiligheid (EFSA) heeft een toelaatbare wekelijkse inname (TWI) vastgesteld van:
+
+**4,4 ng per kilogram lichaamsgewicht per week**
+
+Deze norm is gebaseerd op effecten op het immuunsysteem.
+
+Wetenschappelijk onderzoek laat zien dat PFAS in verband worden gebracht met:
+
+- Verminderde werking van het immuunsysteem  
+- Verminderde vaccinrespons  
+- Mogelijk verhoogde vatbaarheid voor infecties  
+
+De precieze biologische mechanismen worden nog onderzocht (Corsini et al., 2024).
+
+---
+
+### Literatuurlijst
+
+- Amato, M., & Vughs, D. (2023). *Comparison of analytical approaches for assessing total PFAS contamination: TOP assay and AOF analysis.*
+- Bil, W., et al. (2025). *Human biomonitoring of PFAS in the Dutch population.*
+- Corsini, E., et al. (2024). *Immunotoxic effects of PFAS exposure.*
+- Deelen, J. (2024). *Environmental pathways and transport mechanisms of PFAS in aquatic systems.*
+- Ford, M., & Ginley, C. (2024). *Global circulation of PFAS through atmospheric and marine processes.*
+- Jonker, M. (2024). *Occurrence and environmental distribution of PFAS in Dutch surface waters.*
+- Koster, R. (2025). *Phytoremediation of PFAS-contaminated soils.*
+- Pradeep Dewapriya, P., et al. (2023). *Sea spray aerosol as a pathway for PFAS transport.*
+- Smit, C. E., & Verbruggen, E. M. J. (2022). *Translation of EFSA guidance values for PFAS into Dutch standards.*
+- van Leeuwen, S. P. J., et al. (2022). *Environmental behavior and mobility of PFAS.*
+- Wageningen Marine Research (2022). *PFAS in Zeeland.*
+- European Food Safety Authority (EFSA) (2020/2024). *Risk to human health related to PFAS in food.*
 """)
