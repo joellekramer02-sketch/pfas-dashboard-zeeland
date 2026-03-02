@@ -261,11 +261,6 @@ def make_map(map_df: pd.DataFrame, kaarttype: str) -> folium.Map:
 # App
 # =========================
 st.title("🌍 PFAS Dashboard — Zeeland")
-import os
-st.write("Working dir:", os.getcwd())
-st.write("Files in root:", os.listdir("."))
-st.write("Files in Data:", os.listdir("Data") if os.path.exists("Data") else "Data folder not found")
-st.write("DATA_PATH:", DATA_PATH, "Exists?", os.path.exists(DATA_PATH))
 df = load_data(DATA_PATH)
 
 # -------------------------
@@ -522,5 +517,4 @@ Je kunt filteren op PFAS, bron, medium en locatie.
 - **Eenheden kunnen verschillen** (bijv. ng/L of µg/L). Vergelijk alleen waarden die inhoudelijk vergelijkbaar zijn.
 - **<LOQ**: sommige waarden zijn onder de rapportage-/detectiegrens. In de tabel kun je dit herkennen via `LOQ_flag`.
 - Meetmethodes en monsters kunnen verschillen per bron en jaar.
-
 """)
