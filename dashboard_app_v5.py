@@ -264,13 +264,6 @@ def make_map(map_df: pd.DataFrame, kaarttype: str) -> folium.Map:
 # App
 # =========================
 st.title("🌍 PFAS Dashboard — Zeeland")
-if not DATA_PATH.exists():
-    st.error("Datafile niet gevonden op Streamlit Cloud.")
-    st.code(f"Zoekpad: {DATA_PATH}")
-    st.code(f"Bestanden in repo-root: {list(BASE_DIR.iterdir())}")
-    data_dir = BASE_DIR / "Data"
-    st.code(f"Bestanden in Data/: {list(data_dir.iterdir()) if data_dir.exists() else 'Data-map bestaat niet'}")
-    st.stop()
 df = load_data(DATA_PATH)
 
 # -------------------------
@@ -510,7 +503,7 @@ with tab_staaf:
 
 with tab_info:
     st.subheader("ℹ️ Over PFAS")
-st.markdown("""
+    st.markdown("""
 ### Wat zijn PFAS?
 
 PFAS (poly- en perfluoralkylstoffen) zijn door de mens gemaakte chemische stoffen.  
@@ -586,5 +579,6 @@ De precieze biologische mechanismen worden nog onderzocht (Corsini et al., 2024)
 - Wageningen Marine Research (2022). *PFAS in Zeeland.*
 - European Food Safety Authority (EFSA) (2020/2024). *Risk to human health related to PFAS in food.*
 """)
+
 
 
