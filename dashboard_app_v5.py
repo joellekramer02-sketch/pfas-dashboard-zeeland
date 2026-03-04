@@ -614,6 +614,13 @@ Wetenschappelijk onderzoek laat zien dat PFAS in verband worden gebracht met:
 De precieze biologische mechanismen worden nog onderzocht (Corsini et al., 2024).
 
 ---
+### Meer informatie
+
+Voor meer informatie over PFAS, waaronder gezondheidsrisico’s, blootstelling via producten en algemene achtergrondinformatie, kan de officiële website van het **RIVM (Rijksinstituut voor Volksgezondheid en Milieu)** worden geraadpleegd.
+
+➡️ [Meer informatie over PFAS op de website van het RIVM](https://www.rivm.nl/pfas)
+
+---
 
 ### Literatuurlijst
 
@@ -630,6 +637,7 @@ De precieze biologische mechanismen worden nog onderzocht (Corsini et al., 2024)
 - Wageningen Marine Research (2022). *PFAS in Zeeland.*
 - European Food Safety Authority (EFSA) (2020/2024). *Risk to human health related to PFAS in food.*
 """)
+
 
 
 
