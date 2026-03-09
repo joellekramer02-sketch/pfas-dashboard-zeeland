@@ -369,8 +369,8 @@ with st.sidebar:
 # -------------------------
 # Main: Tabs
 # -------------------------
-tab_kaart, tab_tabel, tab_lijn, tab_staaf, tab_info = st.tabs(
-    ["🗺️ Kaart", "📄 Tabel", "📈 Lijngrafiek", "📊 Staafgrafiek", "ℹ️ Over PFAS"]
+tab_info, tab_kaart, tab_tabel, tab_lijn, tab_staaf = st.tabs(
+    ["ℹ️ Over PFAS", "🗺️ Kaart", "📄 Tabel", "📈 Lijngrafiek", "📊 Staafgrafiek"]
 )
 
 with tab_kaart:
@@ -478,79 +478,28 @@ with tab_lijn:
             st.caption("Jaren in deze tijdreeks: " + ", ".join([str(int(x)) for x in agg.index]))
 
 with tab_staaf:
-    st.subheader("📊 Staafgrafiek per PFAS (vergelijking per locatie)")
+    st.subheader("📊 Staafgrafiek per PFAS")
 
-    if subset.empty:
-        st.info("Geen data beschikbaar binnen huidige filters.")
+    geselecteerde_pfas = subset["PFAS"].unique()
+
+    if len(geselecteerde_pfas) == 0:
+        st.info("Selecteer minimaal één PFAS om de grafiek te tonen.")
+    elif len(geselecteerde_pfas) > 1:
+        st.warning("Selecteer één PFAS voor een vergelijking per locatie.")
     else:
-        # 1) Staafgrafiek alleen logisch als er 1 PFAS gekozen is
-        geselecteerde_pfas = subset["PFAS"].dropna().unique()
+        gekozen_pfas = geselecteerde_pfas[0]
+        st.markdown(f"**PFAS:** {gekozen_pfas}")
 
-        if len(geselecteerde_pfas) == 0:
-            st.info("Selecteer minimaal één PFAS om de grafiek te tonen.")
+        unieke_eenheden = subset["Eenheid"].dropna().unique()
+        if len(unieke_eenheden) > 1:
+            st.warning(
+                "Let op: meerdere eenheden aanwezig in deze selectie. "
+                "Controleer of vergelijking inhoudelijk correct is."
+            )
+            st.caption("Gevonden eenheden: " + ", ".join(unieke_eenheden))
 
-        elif len(geselecteerde_pfas) > 1:
-            st.warning("Selecteer één PFAS voor een vergelijking per locatie.")
-
-        else:
-            gekozen_pfas = geselecteerde_pfas[0]
-            st.markdown(f"**PFAS:** {gekozen_pfas}")
-
-            # 2) Eenheid verplichten (ng/L vs ng/g etc.)
-            eenheden = sorted([e for e in subset["Eenheid"].dropna().unique() if str(e).strip() != ""])
-
-            if len(eenheden) == 0:
-                st.warning("Geen eenheid gevonden in de selectie. Grafiek kan niet worden opgebouwd.")
-            else:
-                # Als er meerdere eenheden zijn: gebruiker moet kiezen (verplicht)
-                if len(eenheden) > 1:
-                    st.warning(
-                        "Meerdere eenheden aanwezig (bijv. ng/L en ng/g). "
-                        "Voor een inhoudelijk correcte vergelijking moet je één eenheid kiezen."
-                    )
-                    gekozen_eenheid = st.selectbox("Kies eenheid", options=eenheden, index=0)
-                else:
-                    gekozen_eenheid = eenheden[0]
-
-                # Filter op gekozen eenheid
-                plot_subset = subset[subset["Eenheid"] == gekozen_eenheid].copy()
-
-                # 3) Alleen binnen water-eenheden normaliseren (µg/L -> ng/L)
-                # (als je hier ook ug/g ooit hebt, kun je dit uitbreiden)
-                if gekozen_eenheid.lower() in ["ug/l", "µg/l"]:
-                    plot_subset["Waarde"] = pd.to_numeric(plot_subset["Waarde"], errors="coerce")
-                    plot_subset["Eenheid"] = "ng/L"
-                    plot_subset["Waarde_plot"] = plot_subset["Waarde"] * 1000
-                    y_label = "Concentratie (ng/L)"
-                elif gekozen_eenheid.lower() == "ng/l":
-                    plot_subset["Waarde_plot"] = pd.to_numeric(plot_subset["Waarde"], errors="coerce")
-                    y_label = "Concentratie (ng/L)"
-                else:
-                    # bv ng/g, ng/kg, etc. -> niet omrekenen
-                    plot_subset["Waarde_plot"] = pd.to_numeric(plot_subset["Waarde"], errors="coerce")
-                    y_label = f"Concentratie ({gekozen_eenheid})"
-
-                plot_subset = plot_subset.dropna(subset=["Waarde_plot"])
-
-                if plot_subset.empty:
-                    st.info("Geen waarden beschikbaar voor deze PFAS + eenheid combinatie.")
-                else:
-                    # 4) Maak staafgrafiek op basis van Waarde_plot
-                    # We gebruiken je bestaande functie, maar geven hem een df met Waarde_plot
-                    # -> kleine hack: maak tijdelijk 'Waarde' = Waarde_plot zodat je functie werkt
-                    tmp_df = plot_subset.copy()
-                    tmp_df["Waarde"] = tmp_df["Waarde_plot"]
-
-                    fig = make_bar_by_location(tmp_df, max_locations=25)
-
-                    # Labels
-                    fig.axes[0].set_ylabel(y_label)
-                    fig.axes[0].set_title(f"Mediaan {gekozen_pfas} per locatie (top 25)")
-
-                    st.pyplot(fig, use_container_width=True)
-
-                    if len(eenheden) > 1:
-                        st.caption(f"Deze grafiek toont alleen metingen met eenheid: {gekozen_eenheid}.")
+        fig = make_bar_by_location(subset, max_locations=25)
+        st.pyplot(fig, use_container_width=True)
 
 with tab_info:
     st.subheader("ℹ️ Over PFAS")
@@ -612,14 +561,14 @@ Wetenschappelijk onderzoek laat zien dat PFAS in verband worden gebracht met:
 - Mogelijk verhoogde vatbaarheid voor infecties  
 
 De precieze biologische mechanismen worden nog onderzocht (Corsini et al., 2024).
-
+            
 ---
 ### Meer informatie
 
-Voor meer informatie over PFAS, waaronder gezondheidsrisico’s, blootstelling aan PFAS en algemene achtergrondinformatie, kan de officiële website van het **RIVM (Rijksinstituut voor Volksgezondheid en Milieu)** worden geraadpleegd.
+Voor meer informatie over PFAS, waaronder gezondheidsrisico’s, blootstelling via producten en algemene achtergrondinformatie, kan de officiële website van het **RIVM (Rijksinstituut voor Volksgezondheid en Milieu)** worden geraadpleegd.
 
 ➡️ [Meer informatie over PFAS op de website van het RIVM](https://www.rivm.nl/pfas)
-
+            
 ---
 
 ### Literatuurlijst
@@ -637,6 +586,7 @@ Voor meer informatie over PFAS, waaronder gezondheidsrisico’s, blootstelling a
 - Wageningen Marine Research (2022). *PFAS in Zeeland.*
 - European Food Safety Authority (EFSA) (2020/2024). *Risk to human health related to PFAS in food.*
 """)
+
 
 
 
