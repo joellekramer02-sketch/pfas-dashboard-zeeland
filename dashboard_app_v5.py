@@ -588,7 +588,6 @@ Voor meer informatie over PFAS, waaronder gezondheidsrisico’s, blootstelling v
 - van Leeuwen, S. P. J., et al. (2022). *Environmental behavior and mobility of PFAS.*
 - Wageningen Marine Research (2022). *PFAS in Zeeland.*
 - European Food Safety Authority (EFSA) (2020/2024). *Risk to human health related to PFAS in food.*
-""")
 
 ---
 
