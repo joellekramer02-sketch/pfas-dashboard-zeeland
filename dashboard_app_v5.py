@@ -366,7 +366,7 @@ with st.sidebar:
 
     st.caption("Kaart toont alleen rijen met Latitude/Longitude. Alle metingen blijven wel in de tabel/grafieken.")
     st.caption(
-    "PFAS Dashboard Zeeland — Developed as part of a graduation project at HZ University of Applied Sciences (2025–2026)."
+    "PFAS-dashboard Zeeland — Ontwikkeld in het kader van een afstudeerproject aan de HZ University of Applied Sciences (2025–2026)."
 )
 
 # -------------------------
