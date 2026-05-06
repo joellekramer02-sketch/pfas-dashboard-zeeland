@@ -587,6 +587,18 @@ Voor meer informatie over PFAS, waaronder gezondheidsrisico’s, blootstelling v
 - European Food Safety Authority (EFSA) (2020/2024). *Risk to human health related to PFAS in food.*
 """)
 
+---
+
+### Projectcontext en disclaimer
+
+Dit dashboard is oorspronkelijk ontwikkeld als onderdeel van een afstudeerproject voor de opleiding Chemie aan de **HZ University of Applied Sciences**, uitgevoerd in samenwerking met de **Zeeuwse Milieufederatie (ZMf)** in de periode september 2025 tot maart 2026.
+
+Het dashboard is ontwikkeld om te onderzoeken hoe publiek beschikbare PFAS-monitoringsdata voor Zeeland op een toegankelijke en wetenschappelijk verantwoorde manier kunnen worden geïntegreerd en gevisualiseerd.
+
+Hoewel tijdens de ontwikkeling zorgvuldig is omgegaan met dataverwerking, validatie en visualisatie, blijft het dashboard een informatief en verkennend hulpmiddel. De gebruikte gegevens zijn afkomstig uit meerdere externe datasets, verzameld op verschillende tijdstippen, locaties en milieumatrices. Hierdoor kunnen interpretaties en vergelijkingen beperkingen bevatten.
+
+Dit dashboard geeft geen medisch, juridisch of officieel milieukundig advies. Voor officiële informatie over PFAS en gezondheidskundige richtlijnen wordt verwezen naar het RIVM en andere bevoegde instanties.
+
 
 
 
