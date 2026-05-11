@@ -512,7 +512,7 @@ with tab_staaf:
         st.pyplot(fig, use_container_width=True)
 
 with tab_info:
-    st.subheader("ℹ️ Over PFAS")
+    st.subheader("ℹ️ Informatie")
     st.markdown("""
 ### Welkom
 
@@ -521,6 +521,10 @@ Welkom bij het PFAS Dashboard Zeeland.
 Dit dashboard brengt publiek beschikbare PFAS-metingen uit Zeeland samen in één interactieve omgeving. Met behulp van de filters kunnen gebruikers data verkennen op basis van locatie, jaar, PFAS-type, bron en milieumatrix.
 Gebruik de tabs bovenaan om te navigeren tussen de interactieve kaart, databellen en grafieken. Deze visualisaties maken het mogelijk om PFAS-metingen in Zeeland op verschillende manieren te verkennen.
 Het dashboard is ontwikkeld om PFAS-data toegankelijker en overzichtelijker te maken voor zowel onderzoek als maatschappelijke bewustwording.
+
+---
+
+### Over PFAS
 
 ---
 
