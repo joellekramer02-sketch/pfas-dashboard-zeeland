@@ -37,23 +37,24 @@ def load_data(path: str) -> pd.DataFrame:
     if "Waarde" in df.columns:
         df["Waarde"] = pd.to_numeric(df["Waarde"], errors="coerce")
 
-for col in ["Locatie", "PFAS", "Bron", "Medium", "Sampletype", "Eenheid"]:
-    if col in df.columns:
-        df[col] = df[col].astype(str).str.strip()
+    # Strings strippen
+    for col in ["Locatie", "PFAS", "Bron", "Medium", "Sampletype", "Eenheid"]:
+        if col in df.columns:
+            df[col] = df[col].astype(str).str.strip()
 
-# Eenheden standaardiseren
-if "Eenheid" in df.columns:
-    df["Eenheid"] = (
-        df["Eenheid"]
-        .str.replace("L", "l", regex=False)
-        .str.replace("µg/l", "ug/l", regex=False)
-    )
+    # Eenheden standaardiseren
+    if "Eenheid" in df.columns:
+        df["Eenheid"] = (
+            df["Eenheid"]
+            .str.replace("L", "l", regex=False)
+            .str.replace("µg/l", "ug/l", regex=False)
+        )
+
     return df
 
 
 def download_csv(df: pd.DataFrame) -> bytes:
     return df.to_csv(index=False).encode("utf-8")
-
 
 # =========================
 # Plots
