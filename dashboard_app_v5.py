@@ -598,6 +598,19 @@ Voor meer informatie over PFAS, waaronder gezondheidsrisico’s, blootstelling v
 
 ---
 
+### Gebruikte monitoringsdatasets
+
+De meetgegevens in dit dashboard zijn afkomstig uit meerdere publieke monitoringsdatasets en onderzoeksrapporten, waaronder:
+
+- Wageningen University & Research (WUR) — PFAS in de Westerschelde (2021)
+- Wageningen University & Research (WUR) — PFAS-concentraties in vers gesedimenteerd materiaal uit de Westerschelde (2022)
+- Wageningen University & Research (WUR) — T0 sedimentsamenstelling en PFAS bij Zimmermanpolder (2022)
+- Waterschap Scheldestromen — PFAS in effluent van rwzi's (2024)
+- RIVM — PFAS-metingen in rioolwaterzuiveringen (2025)
+- Rijkswaterstaat (RWS) monitoring data (2022)
+
+---
+
 ### Projectcontext en disclaimer
 
 Dit dashboard is oorspronkelijk ontwikkeld als onderdeel van een afstudeerproject voor de opleiding Chemie aan de **HZ University of Applied Sciences**, uitgevoerd in samenwerking met de **Zeeuwse Milieufederatie (ZMf)** in de periode september 2025 tot maart 2026.
