@@ -598,7 +598,7 @@ Voor meer informatie over PFAS, waaronder gezondheidsrisico’s, blootstelling v
 
 ---
 
-### Gebruikte monitoringsdatasets
+### Gebruikte datasets
 
 De meetgegevens in dit dashboard zijn afkomstig uit meerdere publieke monitoringsdatasets en onderzoeksrapporten, waaronder:
 
